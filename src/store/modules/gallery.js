@@ -1,7 +1,8 @@
 import {createAction, handleActions} from 'redux-actions';
 import {Map, List, fromJS} from 'immutable';
 
-const GET_PHOTO_LIST = 'gallery/GET_PHOTO_LIST';
+import p1 from '../../asset/images/p1.jpg';
+
 const GET_PHOTO_ITEM = 'gallery/GET_PHOTO_ITEM';
 const MOVE_TO_PREV = 'gallery/MOVE_TO_PREV';
 const MOVE_TO_NEXT = 'gallery/MOVE_TO_NEXT';
@@ -14,7 +15,7 @@ export const init = createAction(INIT);
 
 const initState = Map({
    list:fromJS({
-      1:{ title:'1 test', photoURL:'/'}
+      1:{ title:'1 test', photoURL:p1}
    }),
    curPage:1,
    totalItem:20,

@@ -1,0 +1,32 @@
+.counter{
+  height:6rem;
+  width:30%;
+  max-width: 20rem;
+
+  *{
+    float:left;
+    margin:1rem;
+  }
+
+  button{
+    width:4rem;
+    height:4rem;
+    border-radius: 10px;
+    background:#1972b9;
+    color:#fff;
+    font-size:1.8rem;
+  }
+
+  div{
+    width:20%;
+    height: 4rem;
+    max-width: 4rem;
+    min-width: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-size:1.5rem;
+    font-weight: 700;
+  }
+}
