@@ -4,7 +4,9 @@ import {Header} from '../Header';
 const Template = ({children}) => (
     <Fragment>
         <Header/>
-        {...children}
+        <section>
+            {...children}
+        </section>
     </Fragment>
 );
 
