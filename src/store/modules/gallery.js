@@ -12,49 +12,52 @@ const GET_PHOTO_ITEM = 'gallery/GET_PHOTO_ITEM';
 const MOVE_TO_PREV = 'gallery/MOVE_TO_PREV';
 const MOVE_TO_NEXT = 'gallery/MOVE_TO_NEXT';
 const INIT = 'gallery/INIT';
+const QUIT_VIEW = 'gallery/QUIT_VIEW';
 
 export const getPhotoItem = createAction(GET_PHOTO_ITEM);
 export const moveToPrev = createAction(MOVE_TO_PREV);
 export const moveToNext = createAction(MOVE_TO_NEXT);
 export const init = createAction(INIT);
+export const quitView = createAction(QUIT_VIEW);
+
+const list = {
+    1:{ title:'1 test', photoURL:p1},
+    2:{ title:'2 test', photoURL:p2},
+    3:{ title:'1 test', photoURL:p3},
+    4:{ title:'2 test', photoURL:p4},
+    5:{ title:'1 test', photoURL:p5},
+    6:{ title:'2 test', photoURL:p6},
+    7:{ title:'1 test', photoURL:p1},
+    8:{ title:'2 test', photoURL:p2},
+    9:{ title:'1 test', photoURL:p3},
+    10:{ title:'2 test', photoURL:p4},
+    11:{ title:'1 test', photoURL:p5},
+    12:{ title:'2 test', photoURL:p6},
+    13:{ title:'1 test', photoURL:p1},
+    14:{ title:'2 test', photoURL:p2},
+    15:{ title:'1 test', photoURL:p3}
+}
 
 const initState = Map({
-   list:fromJS({
-        1:{ title:'1 test', photoURL:p1},
-        2:{ title:'2 test', photoURL:p2},
-        3:{ title:'1 test', photoURL:p3},
-        4:{ title:'2 test', photoURL:p4},
-        5:{ title:'1 test', photoURL:p5},
-        6:{ title:'2 test', photoURL:p6},
-        7:{ title:'1 test', photoURL:p1},
-        8:{ title:'2 test', photoURL:p2},
-        9:{ title:'1 test', photoURL:p3},
-        10:{ title:'2 test', photoURL:p4},
-        11:{ title:'1 test', photoURL:p5},
-        12:{ title:'2 test', photoURL:p6},
-        13:{ title:'1 test', photoURL:p1},
-        14:{ title:'2 test', photoURL:p2},
-        15:{ title:'1 test', photoURL:p3},
-   }),
+   list:fromJS(list),
    curPage:1,
    totalItem:15,
-   totalPage:null,
+   totalPage:Math.ceil(parseFloat(Object.keys(list).length/4+".0")),
    firstPage:1,
    lastPage:3,
-   itemId:null,
    item:null
 });
 
 export default handleActions({
     [INIT]: state => {
         const totalItem = state.get('totalItem');
-        console.log(totalItem);
+        console.log('w');
         return state.set('totalPage',Math.ceil((parseFloat(totalItem+".0")/4)));
     },
     [GET_PHOTO_ITEM]: (state, action) => {
         const {id} = action.payload;
-        console.log(id);
-        return state.set('itemId',id).set('item',state.getIn(['list',id]));
+        console.log("id");
+        return state.set('item',state.getIn(['list',id]));
     },
     [MOVE_TO_PREV]: (state) => {
         const curPage = state.get('curPage');
@@ -65,5 +68,9 @@ export default handleActions({
         const [curPage, totalPage] = [state.get('curPage'), state.get('totalPage')];
         console.log(state);
         return curPage < totalPage ? state.set('curPage', curPage + 1) : state;
+    },
+    [QUIT_VIEW]: state => {
+        console.log('quit');
+        return state.set('item',null);
     }
 },initState);

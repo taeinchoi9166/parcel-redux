@@ -10,7 +10,6 @@ const PageNav = ({curPage,totalPage,onMovePrev,onMoveNext}) => {
     }
 
 
-    console.log(curPage);
     return (
         <div className="page-nav">
             {curPage !== 1 && (<button onClick={onMovePrev}>&lt;</button>)}
