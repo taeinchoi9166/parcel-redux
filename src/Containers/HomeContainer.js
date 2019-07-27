@@ -18,10 +18,6 @@ class HomeContainer extends Component{
             HomeActions.decrease();
         };
     }
-
-
-
-
     render() {
         return (
             <Fragment>
